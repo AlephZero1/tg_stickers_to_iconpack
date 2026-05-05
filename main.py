@@ -7,14 +7,14 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import FSInputFile
 from PIL import Image
-#import requests
 
 import uuid
-import secrets
+from dotenv import load_dotenv
+load_dotenv()
 
-BOT_TOKEN = secrets.BOT_TOKEN # TG токен
-RH_PATH = secrets.RH_PATH  # Путь к ResourceHacker.exe
-TEMPLATE_DLL_PATH = secrets.TEMPLATE_DLL_PATH  # Путь к ddores.dll
+BOT_TOKEN = str(os.getenv("BOT_TOKEN")) # TG токен
+RH_PATH = str(os.getenv("RH_PATH"))  # Путь к ResourceHacker.exe
+TEMPLATE_DLL_PATH = str(os.getenv("TEMPLATE_DLL_PATH"))  # Путь к ddores.dll
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token=BOT_TOKEN)
