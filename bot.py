@@ -96,9 +96,10 @@ async def cmd_start(message: types.Message):
 
 @dp.message()
 async def handle_sticker_pack(message: types.Message):
-    try:
+    to_parse = ""
+    if message.text:
         to_parse = message.text.strip()
-    except Exception:
+    else:
         status_msg = await message.answer(f"🔍 Отправьте ссылку на стикерпак")
     pack_name = to_parse.strip().rstrip('/').split('/')[-1]
     user_id = message.from_user.id
