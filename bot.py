@@ -96,12 +96,8 @@ async def cmd_start(message: types.Message):
 
 @dp.message()
 async def handle_sticker_pack(message: types.Message):
-    parse1 = message.text.strip()
-    parse2 = parse1[parse1.find('/') + 1:]
-    parse3 = parse2[parse2.find('/') + 1:]
-
-    pack_name = parse3
-    #pack_name = pack_name.find()
+    to_parse = message.text.strip()
+    pack_name = to_parse.strip().rstrip('/').split('/')[-1]
     user_id = message.from_user.id
     temp_dir = f"temp_{user_id}_{uuid.uuid4().hex}" # Уникальная папка
 
